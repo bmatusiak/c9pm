@@ -16,4 +16,4 @@ make install
 cd ..
 rm -rf php-$VERSION*
 
-ln -s $HOME/lib/pkg/$NAME-$VERSION/bin $HOME/bin
+ln -s $HOME/lib/pkg/$NAME-$VERSION/bin/* $HOME/bin
