@@ -1,0 +1,8 @@
+{
+    "name": "gae",
+    "version": "1.7.2",
+    "dependencies": {
+        "python27": "2.7.x",
+        "pil": "1.1.x"
+    }
+}

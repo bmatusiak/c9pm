@@ -1,0 +1,6 @@
+{
+    "name": "pip",
+    "dependencies": {
+        "python27": "~2.7.x"
+    }
+}
