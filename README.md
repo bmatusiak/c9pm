@@ -6,7 +6,7 @@ A simple package manager for [Cloud9 IDE](http://c9.io) projects.
 Installation
 ------------
 
-To install, open your terminal and copy the following command:
+To install, open your terminal and run the following command:
 
     wget -O ~/bin/c9pm https://raw.github.com/c9/c9pm/master/bin/c9pm && chmod +x ~/bin/c9pm
     
