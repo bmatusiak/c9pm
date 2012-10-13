@@ -1,7 +1,7 @@
 c9pm
 ====
 
-A simple package manager for [Cloud9 IDE](http://c9.io) projects.
+A simple package manager for [Cloud9 IDE](http://c9.io) workspaces.
 
 Installation
 ------------
@@ -26,7 +26,7 @@ For instance, to install Python 3.3:
     c9pm install python33
 
 All packages are installed in `~/lib/pkg`, binaries are symlinked in `~/bin`
-which is the user's path.
+which is in the user's path.
 
 Contributing
 ------------
