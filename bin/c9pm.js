@@ -19,13 +19,24 @@ var rootDir = pathParts.slice(0, pathParts.length - 1).join("/") + "/..";
 var packagesDir = rootDir + "/packages"
 
 var commands = {
-    source: function(packages) {
+    "source-install": function(packages) {
         installPackages(packages, true);
     },
     install: function(packages) {
         installPackages(packages, false)
+    },
+    list: function() {
+        fs.readdirSync(packagesDir).forEach(function(packageName) {
+            console.log(packageName);
+        });
     }
 };
+
+if(!commands[cmd]) {
+    console.error("No such command:", cmd);
+    console.error("Supported commands:", Object.keys(commands).join(" "));
+    process.exit(1);
+}
 
 commands[cmd](process.argv.slice(3));
 
