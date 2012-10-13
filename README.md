@@ -35,8 +35,8 @@ Fork this repo, add a new package, create a pull request!
 
 Naming convention for packages: `<name>-<version>`:
 
-* `install.sh`: bash script to download the tarball, clone the git repo, compile
-  and install the package in the user environment
+* `install.sh`: bash script to download the tarball or clone the git repo, compile
+  and install. Does whatever it takes to setup the package in the user's environment.
 * `package.json`: a description of the package:
   * `name`: Package name
   * `version`: Package version
