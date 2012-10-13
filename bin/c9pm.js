@@ -2,17 +2,6 @@ var spawn = require("child_process").spawn;
 var util = require("util");
 var fs = require("fs");
 
-function run(cmd, args, options, callback) {
-    var proc = spawn(cmd, args, options);
-    
-    util.pump(proc.stdout, process.stdout);
-    util.pump(proc.stderr, process.stderr);
-    
-    proc.on('exit', function (code) {
-        callback(code);
-    });
-}
-
 var cmd = process.argv[2];
 var pathParts = process.argv[1].split("/");
 var rootDir = pathParts.slice(0, pathParts.length - 1).join("/") + "/..";
@@ -41,7 +30,9 @@ if(!commands[cmd]) {
 commands[cmd](process.argv.slice(3));
 
 function installPackages(packages, fromSource) {
+    console.log("Packages to install:", packages);
     asyncForEach(packages, function(packageName, next) {
+        console.log("Going to install", packageName);
         var all = fs.readdirSync(packagesDir);
         
         var candidates = all.filter(function(name) {
@@ -96,4 +87,15 @@ function asyncForEach(array, fn, callback) {
         processOne();
     else
         callback();
+}
+
+function run(cmd, args, options, callback) {
+    var proc = spawn(cmd, args, options);
+    
+    util.pump(proc.stdout, process.stdout);
+    util.pump(proc.stderr, process.stderr);
+    
+    proc.on('exit', function (code) {
+        callback(code);
+    });
 }

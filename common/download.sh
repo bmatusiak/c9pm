@@ -12,4 +12,4 @@ wget $URL -O $FILE
 tar xfz $FILE
 rm $FILE
 
-ln -s $HOME/lib/pkg/$PACKAGE/bin/* $HOME/bin
+ln -s $HOME/lib/pkg/$PACKAGE/bin/* $HOME/bin || echo
