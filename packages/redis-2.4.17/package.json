@@ -1,5 +1,5 @@
 {
-    "name": "php5",
-    "version": "5.4.7" ,
+    "name": "redis",
+    "version": "2.4.17" ,
     "downloadable": true
 }
