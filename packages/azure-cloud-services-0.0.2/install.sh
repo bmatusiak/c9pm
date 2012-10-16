@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEST=~/lib/pkg/acs-latest
+DEST=~/lib/pkg/acs-0.0.2
 
 mkdir -p $DEST
 cd $DEST

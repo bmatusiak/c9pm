@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEST=~/lib/pkg/heroku-latest
+DEST=~/lib/pkg/heroku-0.0.1
 
 mkdir -p $DEST
 cd $DEST

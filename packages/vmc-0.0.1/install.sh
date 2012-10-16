@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEST=~/lib/pkg/vmc-latest
+DEST=~/lib/pkg/vmc-0.0.1
 
 mkdir -p $DEST
 cd $DEST
@@ -21,4 +21,4 @@ bundle
 bin/vmc target api.cloudfoundry.com
 
 # add to PATH cause symlinking no work...
-echo export PATH=\$PATH:\$HOME/bin/deploy/vmc/bin >> $HOME/etc/.bashrc
+echo export PATH=\$PATH:$DEST/bin >> $HOME/etc/.bashrc
