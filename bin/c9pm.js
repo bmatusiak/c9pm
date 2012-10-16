@@ -15,14 +15,16 @@ var commands = {
         installPackages(packages, false)
     },
     list: function() {
-        fs.readdirSync(packagesDir).forEach(function(packageName) {
+        fs.readdirSync(packagesDir).sort().forEach(function(packageName) {
             console.log(packageName);
         });
     }
 };
 
 if(!commands[cmd]) {
-    console.error("No such command:", cmd);
+    if (typeof cmd !== "undefined") {
+        console.error("No such command:", cmd);
+    }
     console.error("Supported commands:", Object.keys(commands).join(" "));
     process.exit(1);
 }
