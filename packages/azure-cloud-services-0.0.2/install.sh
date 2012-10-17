@@ -18,3 +18,11 @@ rm azure-cloud-services2.zip
 ln -s $DEST/apps.js $HOME/bin/acs-apps
 ln -s $DEST/locations.js $HOME/bin/acs-locations
 ln -s $DEST/publish.js $HOME/bin/acs-publish
+
+echo -e
+echo -e Windows Azure Cloud Services has been installed
+echo -e
+echo -e The following commands are available:
+echo -e \\tacs-publish\\tPublish an application
+echo -e \\tacs-apps\\tList previously publish applications
+echo -e \\tacs-locations\\tList available datacenter locations

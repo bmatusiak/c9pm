@@ -17,8 +17,9 @@ bin/initdb -D ~/postgres-data
 echo export PATH=\$PATH:$DEST/bin >> $HOME/etc/.bashrc
 
 # now give instructions to the user how to start it
-echo -e =================
-echo -e Postgresql has been installed\\n
+echo -e
+echo -e PostgreSQL has been installed
+echo -e
 echo -e Start it using:
 echo -e \\tpostgres -h \$IP -D \~/postgres-data
 echo -e or

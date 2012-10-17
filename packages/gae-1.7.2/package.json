@@ -1,5 +1,5 @@
 {
-    "name": "gae",
+    "name": "Google App Engine",
     "version": "1.7.2",
     "dependencies": {
         "python27": "2.7.x",

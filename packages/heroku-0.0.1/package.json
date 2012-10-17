@@ -1,4 +1,5 @@
 {
-    "name": "heroku",
-    "version": "0.0.1"
+    "name": "Heroku",
+    "version": "0.0.1",
+    "hasOwnInstructions": true
 }

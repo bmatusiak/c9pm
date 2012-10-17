@@ -1,4 +1,5 @@
 {
-    "name": "vmc",
-    "version": "0.0.1"
+    "name": "VMC",
+    "version": "0.0.1",
+    "hasOwnInstructions": true
 }

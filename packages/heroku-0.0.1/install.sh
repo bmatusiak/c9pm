@@ -9,3 +9,9 @@ unzip heroku.zip -d .
 rm heroku.zip
 
 ln -s $DEST/heroku ~/bin/heroku
+
+echo -e
+echo -e Heroku has been installed
+echo -e
+echo -e View available commands via:
+echo -e \\theroku help

@@ -21,12 +21,23 @@ var commands = {
     }
 };
 
-if(!commands[cmd]) {
+if(!commands[cmd] || commands[cmd] === "help") {
     if (typeof cmd !== "undefined") {
         console.error("No such command:", cmd);
+        return process.exit(1);
     }
-    console.error("Supported commands:", Object.keys(commands).join(" "));
-    process.exit(1);
+    
+    console.log("Welcome to the Cloud9 package manager\n\n" + 
+"You can use this package manager to install packages into your Cloud9 IDE workspace\n\n" + 
+"Available commands\n" +
+"\thelp\t\t\tThis overview\n" +
+"\tlist\t\t\tList available packages\n" +
+"\tinstall [package]\tInstall a package\n" +
+// "\tsource-install [package]\tInstall a package from source (when available)\n" + /* this doesnt work very well a.t.m. */
+"\n" +
+"This software is open source, for support, suggestions or to add new packages, see:\n" +
+"\thttps://github.com/c9/c9pm");
+    return process.exit(0);
 }
 
 commands[cmd](process.argv.slice(3));
@@ -49,16 +60,32 @@ function installPackages(packages, fromSource) {
             installPackage(candidates[0], fromSource, next);
             
     }, function(err) {
-        if(err)
-            return console.error(err);
-        console.log("Done!");
+        if (packages.length > 1) {
+            console.log("\nAll packages have been installed");
+        }
     });
 }
 
 function installPackage(name, fromSource, callback) {
+    var _cb = callback;
+    
     var packageDir = packagesDir + "/" + name;
     var packageJson = JSON.parse(fs.readFileSync(packageDir + "/package.json"));
-    console.log(packageJson);
+    
+    // some packages have their own instructions how to use them,
+    // for other packages we show a generic message that the package has been installed
+    if (!packageJson.hasOwnInstructions) {
+        callback = function (err) {
+            if (err) {
+                console.error("\n" + packageJson.name + " " + packageJson.version + " has failed to install (" + err + ")");
+            }
+            else {
+                console.log("\n" + packageJson.name + " " + packageJson.version + " has been installed");
+            }
+            _cb.apply(this, arguments);
+        };
+    }
+    
     if(packageJson.downloadable && !fromSource) {
         console.log("Downloading package");
         run(rootDir + "/common/download.sh", [name], {

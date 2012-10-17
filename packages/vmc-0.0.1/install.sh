@@ -23,6 +23,15 @@ bin/vmc target api.cloudfoundry.com
 # add to PATH cause symlinking no work...
 echo export PATH=\$PATH:$DEST/bin >> $HOME/etc/.bashrc
 
-# move the gem installed vmc to some other place
-# because it only interfers with our nice real vmc
-rm ~/lib/ruby/gems/bin/vmc
+# execute it in the current shell as well so it works immediately
+PATH=$PATH:$DEST/bin
+
+echo -e
+echo -e VMC has been installed
+echo -e
+echo -e View available commands via:
+echo -e \\tvmc help
+echo -e
+echo -e NOTE! When building web applications listen to these environment variables:
+echo -e \\tPort:\\tPORT
+echo -e \\tHost:\\tIP
