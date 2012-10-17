@@ -22,3 +22,7 @@ bin/vmc target api.cloudfoundry.com
 
 # add to PATH cause symlinking no work...
 echo export PATH=\$PATH:$DEST/bin >> $HOME/etc/.bashrc
+
+# move the gem installed vmc to some other place
+# because it only interfers with our nice real vmc
+rm ~/lib/ruby/gems/bin/vmc
