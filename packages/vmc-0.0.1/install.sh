@@ -24,7 +24,7 @@ bin/vmc target api.cloudfoundry.com
 echo export PATH=\$PATH:$DEST/bin >> $HOME/etc/.bashrc
 
 # remove the gem version because it interferes in the path
-rm lib/ruby/gems/bin/vmc
+rm ~/lib/ruby/gems/bin/vmc
 
 # execute it in the current shell as well so it works immediately
 PATH=$PATH:$DEST/bin
