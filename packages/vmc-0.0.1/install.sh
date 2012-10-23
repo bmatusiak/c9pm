@@ -21,7 +21,7 @@ bundle
 bin/vmc target api.cloudfoundry.com
 
 # add to PATH cause symlinking no work...
-echo export PATH=\$PATH:$DEST/bin >> $HOME/etc/.bashrc
+export PATH=\$PATH:$DEST/bin >> $HOME/etc/.bashrc
 
 # remove the gem version because it interferes in the path
 rm ~/lib/ruby/gems/bin/vmc
