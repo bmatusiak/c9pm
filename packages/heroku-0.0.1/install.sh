@@ -10,6 +10,9 @@ rm heroku.zip
 
 ln -s $DEST/heroku ~/bin/heroku
 
+# now update heroku to latest version if available
+heroku update
+
 echo -e
 echo -e Heroku has been installed
 echo -e
