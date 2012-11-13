@@ -13,4 +13,4 @@ rm install-tl-unx.tar.gz
 cd install-tl*
 TEXLIVE_INSTALL_PREFIX=$DEST ./install-tl -scheme basic
 
-ln -s $DEST/2012/bin/x86_64-linux/* $HOME/bin/
+ln -sf $DEST/2012/bin/x86_64-linux/* $HOME/bin/
