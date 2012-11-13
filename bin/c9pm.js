@@ -5,14 +5,14 @@ var fs = require("fs");
 var cmd = process.argv[2];
 var pathParts = process.argv[1].split("/");
 var rootDir = pathParts.slice(0, pathParts.length - 1).join("/") + "/..";
-var packagesDir = rootDir + "/packages"
+var packagesDir = rootDir + "/packages";
 
 var commands = {
     "source-install": function(packages) {
         installPackages(packages, true);
     },
     install: function(packages) {
-        installPackages(packages, false)
+        installPackages(packages, false);
     },
     list: function() {
         fs.readdirSync(packagesDir).sort().forEach(function(packageName) {
