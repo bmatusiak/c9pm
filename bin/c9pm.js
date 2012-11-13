@@ -119,10 +119,8 @@ function asyncForEach(array, fn, callback) {
 }
 
 function run(cmd, args, options, callback) {
+    options.customFds = [process.stdin.fd, process.stdout.fd, process.stderr.fd];
     var proc = spawn(cmd, args, options);
-    
-    util.pump(proc.stdout, process.stdout);
-    util.pump(proc.stderr, process.stderr);
     
     proc.on('exit', function (code) {
         callback(code);
