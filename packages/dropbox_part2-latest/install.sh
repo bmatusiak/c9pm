@@ -8,6 +8,9 @@ dropbox exclude add ~/Dropbox/*
 dropbox exclude add ~/Dropbox/*
 dropbox exclude add ~/Dropbox/*
 
+# go into project dir first
+cd ~/$C9_PID 
+
 # tah dah
 rm -rf ~/Dropbox/cloud9-$C9_PROJECT
 ln -s $PWD ~/Dropbox/cloud9-$C9_PROJECT
