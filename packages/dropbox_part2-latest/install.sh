@@ -9,13 +9,10 @@ dropbox exclude add ~/Dropbox/*
 dropbox exclude add ~/Dropbox/*
 
 # tah dah
-mkdir ~/Dropbox/cloud9
-ln -s $PWD ~/Dropbox/cloud9/$C9_PROJECT
-
-dropbox exclude remove ~/Dropbox/cloud9/$C9_PROJECT
+ln -s $PWD ~/Dropbox/cloud9-$C9_PROJECT
 
 echo -e
-echo -e Dropbox has been installed, and your current project is synced to a folder called cloud9/$C9_PROJECT
+echo -e Dropbox has been installed, and your current project is synced to a folder called cloud9-$C9_PROJECT
 echo -e
 echo -e View available commands via:
 echo -e \\tdropbox

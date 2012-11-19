@@ -1,4 +1,5 @@
 {
     "name": "Dropbox",
-    "version": "latest"
+    "version": "latest",
+    "hasOwnInstructions": true
 }

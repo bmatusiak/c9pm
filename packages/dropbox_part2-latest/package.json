@@ -1,4 +1,5 @@
 {
     "name": "Dropbox part 2",
-    "version": "latest"
+    "version": "latest",
+    "hasOwnInstructions": true
 }

@@ -14,7 +14,7 @@ chmod +x dropbox.py
 ln -s $DEST/dropbox.py ~/bin/dropbox
 
 echo -e
-echo -e After authenticating, please terminate the process via (CTRL+C,CMD+C) run:
+echo -e After authenticating, please terminate the process via \(CTRL+C,CMD+C\) and run:
 echo -e \\tc9pm install dropbox_part2
 echo -e Starting dropbox daemon...
 echo -e
