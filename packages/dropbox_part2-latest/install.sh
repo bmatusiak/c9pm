@@ -9,7 +9,10 @@ dropbox exclude add ~/Dropbox/*
 dropbox exclude add ~/Dropbox/*
 
 # tah dah
+rm -rf ~/Dropbox/cloud9-$C9_PROJECT
 ln -s $PWD ~/Dropbox/cloud9-$C9_PROJECT
+# this is retarded
+dropbox exclude remove ../../../../../openshift/$OPENSHIFT_GEAR_UUID/app-root/data/Dropbox/cloud9-$C9_PROJECT   
 
 echo -e
 echo -e Dropbox has been installed, and your current project is synced to a folder called cloud9-$C9_PROJECT
