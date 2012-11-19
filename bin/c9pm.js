@@ -49,7 +49,7 @@ function installPackages(packages, fromSource) {
         var all = fs.readdirSync(packagesDir);
         
         var candidates = all.filter(function(name) {
-            return name.indexOf(packageName) === 0;
+            return name.indexOf(packageName + "-") === 0;
         });
         
         if(candidates.length === 0)
@@ -60,6 +60,9 @@ function installPackages(packages, fromSource) {
             installPackage(candidates[0], fromSource, next);
             
     }, function(err) {
+        if (err) {
+            return console.error(err);
+        }
         if (packages.length > 1) {
             console.log("\nAll packages have been installed");
         }
