@@ -3,8 +3,6 @@
 echo Updating c9pm
 cd ~
 rm -rf c9-c9pm-*
-wget https://github.com/c9/c9pm/tarball/master > /dev/null 2> /dev/null
-tar xzf master
-rm master
+curl -L https://github.com/c9/c9pm/tarball/master | tar xz
 
 node ~/c9-c9pm-*/bin/c9pm.js $*
