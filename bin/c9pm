@@ -3,6 +3,6 @@
 echo Updating c9pm
 cd ~
 rm -rf c9-c9pm-*
-curl -L https://github.com/c9/c9pm/tarball/master | tar xz
+curl -L https://github.com/c9/c9pm/tarball/python-3.3.1-support | tar xz
 
 node ~/c9-c9pm-*/bin/c9pm.js $*
