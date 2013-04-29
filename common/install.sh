@@ -23,4 +23,4 @@ cd ..
 rm -rf $DIR
 
 echo Installing...
-ln -s $HOME/lib/pkg/$NAME/bin/* $HOME/bin
+ln -sf $HOME/lib/pkg/$NAME/bin/* $HOME/bin

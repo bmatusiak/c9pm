@@ -51,7 +51,6 @@ function installPackages(packages, fromSource) {
         var candidates = all.filter(function(name) {
             return name.indexOf(packageName + "-") === 0;
         });
-        console.log("candidates: " + candidates)
         if(candidates.length === 0)
             next("Package not found: " + packageName);
         else if(candidates.length > 1)
