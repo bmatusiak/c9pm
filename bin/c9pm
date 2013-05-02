@@ -1,8 +1,39 @@
-#!/bin/bash
+#!/bin/bash -e
 
-echo Updating c9pm
+set -m
+
+C9PM="node $HOME/c9-c9pm-*/bin/c9pm.js"
+NADA="$HOME/c9-nada-nix-*/nada-nix"
+
+IGNORED="python27|php5|git|perl"
+
+echo -n "Updating c9pm "
 cd ~
 rm -rf c9-c9pm-*
-curl -L https://github.com/c9/c9pm/tarball/master | tar xz
+curl -sSL https://github.com/c9/c9pm/tarball/master | tar xz
+curl -sSL https://github.com/c9/nada-nix/tarball/master | tar xz
+echo -n $'\b\b\b\b\b\b\b\b\b\b\b\b\b\b'
 
-node ~/c9-c9pm-*/bin/c9pm.js $*
+if [ "$1" == "list" ]; then
+  $C9PM "$@" &> /tmp/.c9pm-out || (cat /tmp/.c9pm-out && exit 1)
+  $NADA "$@" &> /tmp/.nada-out || (cat /tmp/.nada-out && exit 1)
+  (# cat /tmp/.nada-out &&
+   for L in `cat /tmp/.c9pm-out`; do
+     if ! echo $L | grep -E "$IGNORED" > /dev/null; then
+       echo $L
+     fi
+   done
+  ) | sort | uniq
+  exit
+fi
+
+if [ "$1" == "install" ]; then
+  if $NADA "$@" &> /tmp/.nada-out; then
+    cat /tmp/.nada-out
+    exit
+  fi
+  $C9PM "$@"
+  exit
+fi
+
+$C9PM "$@"
