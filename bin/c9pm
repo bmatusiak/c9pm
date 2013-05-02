@@ -2,16 +2,24 @@
 
 set -m
 
-C9PM="node $HOME/c9-c9pm-*/bin/c9pm.js"
-NADA="$HOME/c9-nada-nix-*/nada-nix"
+C9PM="node $HOME/.c9pm/c9pm/bin/c9pm.js"
+NADA="$HOME/.c9pm/nada-nix/nada-nix"
 
 IGNORED="python27|php5|git|perl"
 
 echo -n "Updating c9pm "
-cd ~
-rm -rf c9-c9pm-*
-curl -sSL https://github.com/c9/c9pm/tarball/master | tar xz
-curl -sSL https://github.com/c9/nada-nix/tarball/master | tar xz
+mkdir -p ~/.c9pm
+cd ~/.c9pm
+if [ -e c9pm ]; then
+  (cd c9pm; git pull -q)
+else
+  git clone -q git://github.com/c9/c9pm.git
+fi
+if [ -e nada-nix ]; then
+  (cd nada-nix; git pull -q)
+else
+  git clone -q git://github.com/c9/nada-nix.git
+fi
 echo -n $'\b\b\b\b\b\b\b\b\b\b\b\b\b\b'
 
 if [ "$1" == "list" ]; then
