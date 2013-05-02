@@ -27,7 +27,7 @@ echo -n $'\b\b\b\b\b\b\b\b\b\b\b\b\b\b'
 if [ "$1" == "list" ]; then
   $C9PM "$@" &> /tmp/.c9pm-out || (cat /tmp/.c9pm-out && exit 1)
   $NADA "$@" &> /tmp/.nada-out || (cat /tmp/.nada-out && exit 1)
-  (# cat /tmp/.nada-out &&
+  ( cat /tmp/.nada-out &&
    for L in `cat /tmp/.c9pm-out`; do
      if ! echo $L | grep -E "$IGNORED" > /dev/null; then
        echo $L
