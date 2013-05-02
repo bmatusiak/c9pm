@@ -21,6 +21,8 @@ else
   git clone -q git://github.com/c9/nada-nix.git
 fi
 echo -n $'\b\b\b\b\b\b\b\b\b\b\b\b\b\b'
+echo -n "              "
+echo -n $'\b\b\b\b\b\b\b\b\b\b\b\b\b\b'
 
 if [ "$1" == "list" ]; then
   $C9PM "$@" &> /tmp/.c9pm-out || (cat /tmp/.c9pm-out && exit 1)
