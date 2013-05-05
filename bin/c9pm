@@ -1,10 +1,49 @@
-#!/bin/bash
+#!/bin/bash -e
 
-echo Updating c9pm
-cd ~
-rm -rf c9-c9pm-*
-wget https://github.com/c9/c9pm/tarball/master > /dev/null 2> /dev/null
-tar xzf master
-rm master
+set -m
 
-node ~/c9-c9pm-*/bin/c9pm.js $*
+C9PM="node $HOME/.c9pm/c9pm/bin/c9pm.js"
+NADA="$HOME/.c9pm/nada-nix/nada-nix"
+
+IGNORED="python27|php5|git|perl"
+
+echo -n "Updating c9pm "
+mkdir -p ~/.c9pm
+cd ~/.c9pm
+if [ -e c9pm ]; then
+  (cd c9pm; git pull -q)
+else
+  git clone -q git://github.com/c9/c9pm.git
+fi
+if [ -e nada-nix ]; then
+  (cd nada-nix; git pull -q)
+else
+  git clone -q git://github.com/c9/nada-nix.git
+fi
+echo -n $'\b\b\b\b\b\b\b\b\b\b\b\b\b\b'
+echo -n "              "
+echo -n $'\b\b\b\b\b\b\b\b\b\b\b\b\b\b'
+
+if [ "$1" == "list" ]; then
+  $C9PM "$@" &> /tmp/.c9pm-out || (cat /tmp/.c9pm-out && exit 1)
+  $NADA "$@" &> /tmp/.nada-out || (cat /tmp/.nada-out && exit 1)
+  ( cat /tmp/.nada-out &&
+   for L in `cat /tmp/.c9pm-out`; do
+     if ! echo $L | grep -E "$IGNORED" > /dev/null; then
+       echo $L
+     fi
+   done
+  ) | sort | uniq
+  exit
+fi
+
+if [ "$1" == "install" ]; then
+  if $NADA "$@" &> /tmp/.nada-out; then
+    cat /tmp/.nada-out
+    exit
+  fi
+  $C9PM "$@"
+  exit
+fi
+
+$C9PM "$@"
